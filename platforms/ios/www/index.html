@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, target-densitydpi=device-dpi" />
+        <!--<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.0-rc.1.min.css">-->
+
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <title>乐谱查看</title>
+    </head>
+    <body class="landscape">
+
+        <div>
+            <div class="header">
+                <div class="status-bar">&nbsp;</div>
+                <div class="title-bar">
+                    <div class="btn-left-div">
+                        <a href="#" class="btn hide" id="btn-back" >返回</a>
+                        <a href="#" class="btn"  id="btn-add">添加</a>
+                        <a href="#" class="btn" id="show-search">搜索</a>
+                    </div>
+                    <h1 id="h-title">所有图片</h1>
+                    <div class="btn-right-div">
+                    <!--<span class="btn-group">-->
+                        <a id="btn-delete" href="#"  class="btn hide">删除</a>
+                        <a id="btn-rename" href="#"  class="btn hide">重命名</a>
+                        <a id="btn-cancel" href="#" class="btn hide">取消</a>
+                        <a id="btn-edit" href="#"  class="btn">编辑</a>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+
+            <div class="content">
+                <div class="ani-panel gallery" id="panel-gallery">
+                    <div class="image-list" id="image_list">
+
+
+                        <!--<div class="image-div select-image">-->
+
+                            <!--<div class="image-outer">-->
+                                <!--<div class="image-inner">-->
+                                    <!--<img src="img/gallery/1.jpg" />-->
+                                    <!--<i class="select"></i>-->
+                                <!--</div>-->
+
+                            <!--</div>-->
+                            <!--<p class="title">美女</p>-->
+                        <!--</div>-->
+
+
+                    </div>
+                </div>
+                <div class="ani-panel detail flip" style="display: none;" id="panel-detail">
+
+                     <img class="image-detail" src="">
+                     <img class="image-detail" src="">
+                     <img class="image-detail" src="">
+
+                    <!--<div id="prev-btn" class="prev-next prev"></div>-->
+                    <!--<div id="next-btn" class="prev-next next"></div>-->
+                </div>
+            </div>
+
+            <!--<div data-role="footer">-->
+                <!--<h3>我是footer部分</h3>-->
+            <!--</div>-->
+
+            <div id="dialog-mask" class="hide"></div>
+
+            <div id="import-dialog" class="dialog hide">
+                <img class="dialog-arrow" src="img/tarrow.png">
+                <div class="dialog-title">导入图片</div>
+                <ul class="import-list">
+                    <li id="import-albums">从相册导入<img src="img/rarrow.png"></li>
+                    <li id="import-url">从网络下载<img src="img/rarrow.png"></li>
+                    <li id="import-camera">从相机拍摄<img src="img/rarrow.png"></li>
+                </ul>
+            </div>
+
+            <div id="albums-dialog" class="hide">
+                <img class="dialog-arrow" src="img/larrow.png">
+
+                <div class="dialog-title">
+                    <span>选择照片</span>
+                    <a href="#" class="btn"><img src="img/lbarrow.png">返回</a>
+                </div>
+
+
+                <div class="dialog-content">
+                    <ul id="albums-list" class="hide">
+                        <!--<li>-->
+                           <!--<img class="thumb"  src="img/gallery/5.jpg">-->
+                           <!--<div>-->
+                                <!--<h3>相机胶卷</h3><p>30</p>-->
+                           <!--</div>-->
+                            <!--<img class="rarrow" src="img/rarrow.png">-->
+                        <!--</li>-->
+
+                    </ul>
+                    <div id="thumb-list" >
+                        <!--<div class="thumb">-->
+                            <!--<img src="img/gallery/5.jpg"/>-->
+                        <!--</div>-->
+                    <!---->
+
+                    </div>
+                </div>
+
+                <div class="dialog-select" >
+                    <div class="dialog-footer">
+                        <h3 style="display: inline">当前选中<span id="select-number">0</span>张</h3>
+                        <a id="btn-import" href="#" class="btn">确认导入</a>
+                    </div>
+                    <div id="select-thumb-list">
+                        <!--<div class="thumb">-->
+                            <!--<img src="img/gallery/5.jpg"/>-->
+                            <!--<span class="delete"><img src="img/delete.png"></span>-->
+                        <!--</div>-->
+                     <!---->
+
+                    </div>
+                </div>
+            </div>​
+
+            <div id="search-dialog" class="hide">
+                <img src="img/twarrow.png" class="dialog-arrow">
+                <div class="search-content">
+                    <input id="txt-search" value="" placeholder="搜索图片" />
+                    <!--<i class="ui-icon ui-icon-search"></i>-->
+                    <!--<input id="search-value" data-role='none' type="text"/>-->
+
+                </div>
+                <div class="dialog-footer">
+                    <a href="#" class="btn" id="btn-search">过滤图片</a>
+                    <a href="#" class="btn" id="btn-search-back">显示全部</a>
+                </div>
+            </div>
+
+        </div>
+
+
+        <script type="text/javascript" src="phonegap.js"></script>
+
+        <script type="text/javascript" src="js/jquery-2.0.3.min.js"></script>
+        <!--<script type="text/javascript" src="js/jquery.mobile-1.4.0-rc.1.min.js"></script>-->
+        <!--<script type="text/javascript" src="js/jgestures.min.js"></script>-->
+        <script type="text/javascript" src="js/utility.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/main-page.js"></script>
+        <script type="text/javascript" src="js/detail-page.js"></script>
+        <script type="text/javascript" src="js/transition.js"></script>
+        <script type="text/javascript" src="js/edit-photo.js"></script>
+        <script type="text/javascript">
+            app.initialize();
+        </script>
+
+        <div id="debug-panel">
+            <div>
+                <input type="button" id="debug-btn" value="Test">
+            </div>
+        </div>
+    </body>
+</html>
